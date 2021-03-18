@@ -51,7 +51,7 @@ class dS378Agent:
         if params is None:
             params = {}
 
-        f_sample = params.get('sampling_frequency', 0.1)
+        f_sample = params.get('sampling_frequency', 0.5)
         sleep_time = 1/f_sample - 0.1
 
         with self.lock.acquire_timeout(timeout=0, job='acq') as acquired:
