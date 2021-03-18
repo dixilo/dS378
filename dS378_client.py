@@ -16,10 +16,11 @@ def main():
 
     if op_type == 'get':
         _, _, session = ds_client.get_relays()
-        for key, val in session['data']:
+        print(session['data'])
+        for key, val in session['data'].items():
             print(key, val)
     elif op_type == 'set':
-        relay_num = int(sys.argv[2])
+        relay_number = int(sys.argv[2])
         on_off = sys.argv[3]
 
         if on_off in ['on', '1']:
@@ -30,7 +31,7 @@ def main():
             usage()
             sys.exit(1)
 
-        ds_client.set_relay(relay_num=relay_num, on_off=on_off)
+        ds_client.set_relay(relay_number=relay_number, on_off=on_off)
     else:
         usage()
 
