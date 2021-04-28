@@ -166,7 +166,14 @@ def main():
 
     agent_inst, runner = ocs_agent.init_site_agent(args)
 
-    ds_agent = dS378Agent(agent_inst)
+    kwargs = {}
+
+    if args.port is not None:
+        kwargs['port'] = args.port
+    if args.ip is not None:
+        kwargs['ip'] = args.ip
+
+    ds_agent = dS378Agent(agent_inst, **kwargs)
 
     agent_inst.register_task(
         'set_relay',
